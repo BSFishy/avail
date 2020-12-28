@@ -5,7 +5,7 @@ import { signIn, signOut, useSession } from 'next-auth/client'
 type Props = {};
 
 const Header = ({}: Props) => {
-  const [ session, loading ] = useSession()
+  const [session, loading] = useSession()
 
   const userText = !session ? 'Login' : 'Logout';
   const userLink = !session ? signIn : signOut;
