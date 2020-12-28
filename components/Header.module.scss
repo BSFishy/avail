@@ -1,0 +1,39 @@
+nav.nav_bar {
+  background-color: var(--secondary);
+  box-shadow: 0 5px 15px 5px rgba(0, 0, 0, 0.36);
+  margin-bottom: 20px;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: space-between;
+    align-items: center;
+
+    margin: 0;
+    padding: 20px 30px;
+
+    li {
+      display: inline-block;
+      margin-left: 15px;
+      font-size: 1.2rem;
+
+      a {
+        cursor: pointer;
+      }
+    }
+
+    li:nth-child(1) {
+      margin-left: 0;
+
+      h1 {
+        margin: 0;
+      }
+    }
+
+    li.item_right {
+      margin-left: auto;
+    }
+  }
+}

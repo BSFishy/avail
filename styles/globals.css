@@ -1,9 +1,19 @@
+:root {
+  --primary: #41427f;
+  --primary-accent: #eeeeee;
+
+  --secondary: #4e5287;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+  background-color: var(--primary);
+  color: var(--primary-accent);
 }
 
 a {
