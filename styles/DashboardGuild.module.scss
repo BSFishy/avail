@@ -1,0 +1,11 @@
+div.error {
+  margin: 25px auto auto;
+  width: 75%;
+
+  a.errorLink {
+    padding: 10px;
+    background-color: var(--text);
+    color: var(--text-opposite);
+    border-radius: 5px;
+  }
+}

@@ -1,0 +1,48 @@
+$height: 72px;
+$padding: 25px;
+
+:export {
+  height: $height;
+}
+
+div.container {
+  width: 75%;
+  margin: 40px auto auto;
+
+  > :first-child {
+    border-top: none;
+  }
+
+  > * {
+    border-top: 2px solid var(--text-opposite);
+  }
+
+  div.guild {
+    display: flex;
+    align-items: center;
+    height: $height + $padding * 2;
+    padding: $padding 0;
+
+    > :first-child {
+      margin-left: 0;
+    }
+
+    > * {
+      margin-left: 15px;
+    }
+
+    div.name {
+      height: fit-content;
+      font-size: 1.4rem;
+      flex: 1 1 auto;
+
+      .errorLink {
+        display: block;
+      }
+    }
+  }
+}
+
+.icon {
+  border-radius: 50%;
+}

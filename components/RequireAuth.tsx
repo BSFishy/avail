@@ -1,24 +1,15 @@
-import React, { ReactNode } from 'react'
+import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/client'
-import Unauthorized from './Unauthorized'
 
-type Props = {
-  children?: ReactNode
-}
-
-const RequireAuth = ({ children }: Props) => {
+const RequireAuth = () => {
   const [session, loading] = useSession()
 
   if (loading) return null
 
-  if (!loading && !session)
-    return (
-      <Unauthorized>
-        Test
-      </Unauthorized>
-    )
-
-  return children
+  if (!loading && !session) {
+    const router = useRouter()
+    router.push('/')
+  }
 }
 
 export default RequireAuth
