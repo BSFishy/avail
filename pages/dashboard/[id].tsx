@@ -1,7 +1,9 @@
 import { GetServerSideProps } from 'next'
+import { getSession } from 'next-auth/client'
 
 import styles from '../../styles/DashboardGuild.module.scss'
 import Layout from '../../components/Layout'
+import RequireAuth from '../../components/RequireAuth'
 
 import { Channel, PartialGuild, Permissions } from '../../interfaces'
 import { HTTPError, isError } from '../../interfaces/error'
@@ -13,6 +15,13 @@ type Props = {
 }
 
 const Server = ({ error, channels }: Props) => {
+  let auth = RequireAuth()
+  if (auth === 'loading') {
+    return null
+  } else if (auth === 'redirect') {
+    return (<p>Redirecting...</p>)
+  }
+
   if (error) {
     // TODO(BSFishy): make this invite link a part of the regular page
     return (
@@ -40,15 +49,19 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     id = id.join('')
   }
 
-  let channels = await getChannels(id)
-  let props
-  if (isError(channels)) {
-    props = {
-      error: channels
-    }
-  } else {
-    props = {
-      channels: channels
+  let session = await getSession(context)
+  let props = {}
+
+  if (session) {
+    let channels = await getChannels(id)
+    if (isError(channels)) {
+      props = {
+        error: channels
+      }
+    } else {
+      props = {
+        channels: channels
+      }
     }
   }
 

@@ -16,7 +16,12 @@ type Props = {
 }
 
 const Dashboard = ({ guilds }: Props) => {
-  RequireAuth()
+  let auth = RequireAuth()
+  if (auth === 'loading') {
+    return null
+  } else if (auth === 'redirect') {
+    return (<p>Redirecting...</p>)
+  }
 
   return (
     <Layout>
